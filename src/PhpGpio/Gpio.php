@@ -98,6 +98,8 @@ class Gpio implements GpioInterface
         // Export pin
         file_put_contents(GpioInterface::PATH_EXPORT, $pinNo);
 
+        usleep(500);
+
         // if valid direction then set direction
         if ($this->isValidDirection($direction)) {
             file_put_contents(GpioInterface::PATH_GPIO.$pinNo.'/direction', $direction);
@@ -112,8 +114,10 @@ class Gpio implements GpioInterface
     /**
      * Get input value
      *
-     * @param  int   $pinNo
+     * @param  int $pinNo
+     *
      * @return false|string string GPIO value or boolean false
+     * @throws \Exception
      */
     public function input($pinNo)
     {
@@ -135,7 +139,9 @@ class Gpio implements GpioInterface
      *
      * @param  int    $pinNo
      * @param  string $value
+     *
      * @return mixed  Gpio current instance or boolean false
+     * @throws \Exception
      */
     public function output($pinNo, $value)
     {
