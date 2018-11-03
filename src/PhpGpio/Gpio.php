@@ -98,7 +98,7 @@ class Gpio implements GpioInterface
         // Export pin
         file_put_contents(GpioInterface::PATH_EXPORT, $pinNo);
 
-        usleep(100000);
+        usleep(300000);
 
         // if valid direction then set direction
         if ($this->isValidDirection($direction)) {
